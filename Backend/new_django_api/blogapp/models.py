@@ -11,7 +11,7 @@ class CustomUser(AbstractUser):
     facebook = models.URLField(max_length=255, blank = True, null = True )
     youtube = models.URLField(max_length=255, blank = True, null = True )
     instagram = models.URLField(max_length=255, blank = True, null = True )
-    twitter = models.URLField(max_length=255, blank = True, null = True )
+    github = models.URLField(max_length=255, blank = True, null = True )
 
 def __str__(self):
     return self.username
