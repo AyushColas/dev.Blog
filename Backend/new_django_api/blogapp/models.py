@@ -30,7 +30,7 @@ class Blog(models.Model):
     content = models.TextField() 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, related_name="blogs", null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField(blank=True, null=True)
     is_draft = models.BooleanField(default=True)
     category = models.CharField(max_length=255, choices = CATEGORY, blank=True, null=True)
