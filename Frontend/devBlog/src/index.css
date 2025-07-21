@@ -1,68 +1,71 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground)); 
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  @keyframes type{
+
+  }
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Light Theme - Clean, Modern, and Elegant */
+    --background: 0 0% 100%;             /* Pure white for a crisp base */
+    --foreground: 270 10% 25%;            /* Very dark, slightly purple-tinted grey for general text.
+                                             More neutral and readable than bright gold. */
+
+    --primary: 270 70% 45%;               /* Richer, more vibrant medium purple */
+    --primary-foreground: 0 0% 100%;      /* Pure white for excellent contrast on primary elements */
+
+    --card: 0 0% 98%;                     /* Very subtle off-white for cards, clear distinction from background */
+    --border: 270 15% 90%;                /* Very light, desaturated purple-grey border for subtle harmony */
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    /* Dark Theme - Deep, Sophisticated, and Contrasting */
+    --background: 240 20% 8%;             /* Deeper, elegant near-black indigo */
+    --foreground: 270 30% 75%;            /* Soft lavender-grey for main text, good readability against dark BG */
+
+    --primary: 45 100% 65%;               /* Brighter, more vibrant gold/yellow to pop against dark background */
+    --primary-foreground: 240 20% 10%;    /* Darker indigo for text *on* primary elements (e.g., gold buttons),
+                                             creating good contrast and cohesive dark tone */
+
+    --card: 240 15% 15%;                  /* Slightly lighter deep grayish indigo for cards, good differentiation */
+    --border: 270 20% 25%;                /* Darker, less saturated purple border, harmonious with dark background */
   }
-  button {
-    background-color: #f9f9f9;
+  
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+
+@layer utilities{
+@keyframes typing {
+  from { width: 0 }
+  to { width: 7ch }
+}
+
+.animate-typing {
+  animation: typing 1.5s steps(9) forwards;
+  overflow: hidden;
+  line-height: 1.3;
+}
+}
+
+
