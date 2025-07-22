@@ -75,7 +75,6 @@ const icons = [
 ];
 
 const DevBackground = () => {
-    {/*remove later */}
     document.documentElement.classList.add("dark");
 
     const[backgroundItems, setbackgroundItems] = useState([]);
@@ -114,7 +113,7 @@ const DevBackground = () => {
             backgroundItems.push(
                 <Icon 
                     key={`${row}-${col}`}
-                    className="absolute text-muted-foreground"
+                    className="absolute text-muted-foreground animate-fadeIn"
                     style = {{
                         position: "absolute",
                         left: `${x}%`,
@@ -129,7 +128,7 @@ const DevBackground = () => {
     };
 
     return(
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden text-foreground/20 bg-background">
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden text-foreground/20 bg-background">
             {backgroundItems}
         </div>
     );
